@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { SpotifyService } from '../spotify.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -10,7 +10,6 @@ import { Router } from '@angular/router';
 })
 export class SearchComponent {
   query: string;
-  title = 'first-routed-app';
   obsTrack: Observable<Object>;
   results: any;
   // faccio iniettare lo spotify service e faccio una ricerca
@@ -28,7 +27,7 @@ export class SearchComponent {
     });
   }
 
-  getTrack(id: string): void {
+  goToTrack(id: string): void {
     this.router.navigateByUrl(`/track/${id}`);
   }
 

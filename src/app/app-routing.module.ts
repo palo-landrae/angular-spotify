@@ -6,6 +6,11 @@ import { ArtistComponent } from './artist/artist.component';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: '/search',
+    pathMatch: 'full',
+  },
+  {
     path: 'search',
     component: SearchComponent,
   },
@@ -15,12 +20,12 @@ const routes: Routes = [
   },
   {
     path: 'artist/:id',
-    component: ArtistComponent
-  }
+    component: ArtistComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
