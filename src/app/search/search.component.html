@@ -1,0 +1,29 @@
+<div class="p-2">
+  <h1 class="text-white my-2">Search a track</h1>
+  <p>
+    <input type="text" placeholder="Artist, songs, albums..." class="py-2 w-full max-w-xs px-4 rounded-xl mr-2" #newquery />
+    <button (click)="submit(newquery)" class="bg-lime-700 py-2 px-4 text-white rounded-xl">Search</button>
+  </p>
+  <div *ngIf="results" class="text-white">
+    <div *ngIf="!results.tracks || results.tracks.items.length == 0">
+      <span>No tracks were found with the term '{{ query }}'</span>
+    </div>
+    <div *ngIf="results.tracks && results.tracks.items.length > 0">
+      <h1 class="text-white my-2">Results</h1>
+      <div class="flex flex-wrap w-full">
+        <div class="w-full md:w-[360px]" *ngFor="let t of results.tracks.items">
+          <div class="flex flex-row text-white p-2 rounded bg-zinc-800 m-2">
+            <div class="w-24 h-24 md:w-36 md:h-36 relative">
+              <img src="{{ t.album.images[1].url }}" class="w-full h-full rounded object-cover" />
+            </div>
+            <div class="ml-2 w-32">
+              <p class="text-base font-semibold">{{ t.name }}</p>
+              <p class="text-zinc-300">{{ t.artists[0].name }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
