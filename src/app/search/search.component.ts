@@ -8,14 +8,13 @@ import { Router } from '@angular/router';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],
 })
-
 export class SearchComponent {
   query: string;
   title = 'first-routed-app';
   obsTrack: Observable<Object>;
   results: any;
   // faccio iniettare lo spotify service e faccio una ricerca
-  constructor(private spotify: SpotifyService, private router: Router) { }
+  constructor(private spotify: SpotifyService, private router: Router) {}
 
   submit(query: HTMLInputElement): void {
     if (!query.value) {
