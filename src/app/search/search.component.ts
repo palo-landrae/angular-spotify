@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { SpotifyService } from '../spotify.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -14,7 +15,7 @@ export class SearchComponent {
   obsTrack: Observable<Object>;
   results: any;
   // faccio iniettare lo spotify service e faccio una ricerca
-  constructor(public spotify: SpotifyService) { }
+  constructor(private spotify: SpotifyService, private router: Router) { }
 
   submit(query: HTMLInputElement): void {
     if (!query.value) {
@@ -26,6 +27,10 @@ export class SearchComponent {
       this.results = data;
       console.log(this.results);
     });
+  }
+
+  getTrack(id: string): void {
+    this.router.navigateByUrl(`/track/${id}`);
   }
 
   renderResults(res: any): void {
