@@ -23,7 +23,6 @@ export class SearchComponent {
     this.obsTrack = this.spotify.searchTrack(this.query);
     this.obsTrack.subscribe((data) => {
       this.results = data;
-      console.log(this.results);
     });
   }
 

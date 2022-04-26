@@ -34,12 +34,10 @@ export class TrackComponent implements OnInit {
   //Ogni volta che viene invocata la route tracks/:id, l'observable richiama questo metodo
   getRouterParam = (params: ParamMap) => {
     let trackId = params.get('id'); //Ottengo l'id dai parametri
-    console.log(trackId); //Stampo su console
     //spotifyServiceObs va dichiarato
     this.spotifyServiceObs = this.service.getTrack(trackId);
     this.spotifyServiceObs.subscribe((data) => {
       this.track = data;
-      console.log(data);
     });
   };
 
