@@ -11,12 +11,12 @@ export class SpotifyService {
   constructor(private http: HttpClient) { }
 
   searchTrack(query: string) {
-    const url = `http://${this.domain}/api/search_track?q=${query}&type=track`;
+    const url = `${this.domain}/api/search_track?q=${query}&type=track`;
     return this.http.get(url);
   }
 
   getTrack(id: string) {
-    const url = `http://${this.domain}/api/get_track?id=${id}`;
+    const url = `${this.domain}/api/get_track?id=${id}`;
     return this.http.get(url);
   }
 }
