@@ -1,12 +1,14 @@
-<div *ngIf="track" class="text-white">
-  <h1>{{ track.name }}</h1>
-  <p>
-    <img src="{{ track.album.images[1].url }}" />
-  </p>
-  <p>
-    <audio controls>
-      <source src="{{ track.preview_url }}" />
-    </audio>
-  </p>
-  <p><a href (click)="back()">Back</a></p>
+<div *ngIf="track" class="text-white p-4 flex flex-col max-w-sm">
+  <img src="{{ track.album.images[1].url }}" class="w-72 h-72 rounded-lg" />
+  <h1 class="text-2xl">{{ track.name }}</h1>
+  <h3 class="mb-2">{{ track.artists[0].name }}</h3>
+  <audio controls class="max-w-[288px]">
+    <source src="{{ track.preview_url }}" />
+  </audio>
+  <button
+    (click)="back()"
+    class="py-2 px-4 max-w-[288px] bg-blue-300 rounded-lg my-2"
+  >
+    Back
+  </button>
 </div>

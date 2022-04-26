@@ -39,6 +39,7 @@ export class TrackComponent implements OnInit {
     this.spotifyServiceObs = this.service.getTrack(trackId);
     this.spotifyServiceObs.subscribe((data) => {
       this.track = data;
+      console.log(data);
     });
   };
 

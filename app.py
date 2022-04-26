@@ -1,7 +1,7 @@
 from dotenv import load_dotenv
 load_dotenv()
 
-from flask import Flask, request, jsonify, make_response, render_template
+from flask import Flask, request, jsonify, make_response, render_template, redirect
 from flask_cors import CORS
 import requests
 import os
@@ -11,7 +11,7 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 static_path = os.path.join(dir_path, 'dist/angular-spotify')
 template_path = os.path.join(dir_path,'dist/angular-spotify') 
 
-app = Flask(__name__, static_url_path='/static', static_folder=static_path, template_folder=template_path)
+app = Flask(__name__, static_url_path='/', static_folder=static_path, template_folder=template_path)
 CORS(app)
 
 # urls
@@ -38,6 +38,10 @@ def get_access_token():
 
 @app.route("/")
 def hello_world():
+    return render_template('index.html')
+
+@app.route('/static/')
+def static_path():
     return render_template('index.html')
 
 @app.route("/api/search_track")
